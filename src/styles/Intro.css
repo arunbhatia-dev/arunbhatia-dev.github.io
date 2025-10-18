@@ -1,9 +1,10 @@
 #intro {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 0.5rem 2rem 2rem 2rem;
 }
 
 #intro-desc {
