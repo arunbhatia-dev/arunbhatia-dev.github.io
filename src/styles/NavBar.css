@@ -72,19 +72,64 @@
 }
 
 /* Responsive design for smaller screens */
+@media (max-width: 1024px) {
+  .navbar-center {
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar {
-    flex-wrap: wrap;
+    flex-direction: column;
     padding: 1rem;
+    gap: 1rem;
+  }
+
+  .navbar-left {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navbar-brand {
+    font-size: 1.3rem;
   }
 
   .navbar-center {
-    gap: 1rem;
-    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    order: 3;
   }
 
-  .navbar-left,
+  .nav-link {
+    font-size: 0.85rem;
+  }
+
   .navbar-right {
-    margin-bottom: 0rem;
+    order: 2;
+    gap: 1.5rem;
+  }
+
+  .icon-link svg {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .navbar-center {
+    gap: 0.6rem;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
   }
 }
