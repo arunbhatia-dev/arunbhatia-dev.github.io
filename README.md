@@ -1,4 +1,4 @@
-1) npm Strart
+1) npm strart
 
 2) npm run deploy -- -m "message"
 
