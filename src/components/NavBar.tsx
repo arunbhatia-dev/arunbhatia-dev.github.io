@@ -9,11 +9,11 @@ class NavBar extends React.Component {
     return (
       <nav className="navbar">
         <div className="navbar-left">
-          <a href="#home" className="navbar-brand">Arun Bhatia</a>
+          <a href="#intro" className="navbar-brand">Arun Bhatia</a>
         </div>
 
         <div className="navbar-center">
-          <a href="#home" className="nav-link">Home</a>
+          <a href="#intro" className="nav-link">Home</a>
           <a href="#about" className="nav-link">About</a>
           <a href="#experience" className="nav-link">Experience</a>
           <a href="#education" className="nav-link">Education</a>
@@ -25,7 +25,7 @@ class NavBar extends React.Component {
           <a href="https://github.com/arunbhatia-dev" target="_blank" rel="noopener noreferrer" className="icon-link">
             <GitHubIcon />
           </a>
-          <a href="https://www.linkedin.com/in/arun-bhatia-807043204/" target="_blank" rel="noopener noreferrer" className="icon-link">
+          <a href="https://fi.linkedin.com/in/arun-bhatia-807043204" target="_blank" rel="noopener noreferrer" className="icon-link">
             <LinkedInIcon />
           </a>
         </div>

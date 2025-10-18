@@ -9,7 +9,7 @@
 @media (max-width: 768px) {
   .laptop-container {
     height: 350px;
-    margin-top: -10rem;
+    margin-top: -15rem;
     margin-bottom: -1rem;
   }
 }
@@ -17,7 +17,7 @@
 @media (max-width: 480px) {
   .laptop-container {
     height: 300px;
-    margin-top: -10rem;
+    margin-top: -15rem;
     margin-bottom: 0rem;
   }
 }
