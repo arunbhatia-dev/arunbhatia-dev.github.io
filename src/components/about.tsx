@@ -1,5 +1,10 @@
 import React from "react";
 import "../styles/about.css";
+import CodeIcon from "@mui/icons-material/Code";
+import JavascriptIcon from "@mui/icons-material/Javascript";
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import StorageIcon from "@mui/icons-material/Storage";
+import CloudIcon from "@mui/icons-material/Cloud";
 
 interface AboutState {
     isVisible: boolean;
@@ -49,8 +54,8 @@ class About extends React.Component<{}, AboutState> {
 
     renderTechStack = () => {
         const tech_stack = [
-            { name: "Typescript", items: [] },
-            { name: "JavaScript ES6+", items: ["React", "Node.js"] },
+            { name: "Typescript", items: [], icon: <CodeIcon /> },
+            { name: "JavaScript ES6+", items: ["React", "Node.js"], icon: <JavascriptIcon /> },
             { name: "Python", items: [
                 "Scikit-learn",
                 "TensorFlow",
@@ -63,9 +68,9 @@ class About extends React.Component<{}, AboutState> {
                 "FastAPI",
                 "Flask",
                 "PySpark"
-            ]},
-            { name: "Scala", items: [] },
-            { name: "C", items: [] },
+            ], icon: <CodeIcon />},
+            { name: "Scala", items: [], icon: <CodeIcon /> },
+            { name: "C", items: [], icon: <CodeIcon /> },
             { name: "AI/ML", items: [
                 "Machine Learning",
                 "Deep Learning",
@@ -74,12 +79,12 @@ class About extends React.Component<{}, AboutState> {
                 "Reinforcement Learning",
                 "Retrieval Augmented Generation (RAG)",
                 "Model Context Protocol (MCP)",
-            ]},
+            ], icon: <PsychologyIcon />},
             { name: "Databases", items: [
                 "PostgreSQL",
                 "MongoDB",
                 "Redis",
-            ]},
+            ], icon: <StorageIcon />},
             { name: "AWS", items: [
                 "Application Load Balancer",
                 "EC2",
@@ -100,7 +105,7 @@ class About extends React.Component<{}, AboutState> {
                 "CloudWatch",
                 "IAM",
                 "Secrets Manager",
-            ]},
+            ], icon: <CloudIcon />},
             { name: "Azure", items: [
                 "App Services",
                 "Functions",
@@ -111,7 +116,7 @@ class About extends React.Component<{}, AboutState> {
                 "Container Instances",
                 "Container Registry",
                 "Azure DevOps",
-            ]}
+            ], icon: <CloudIcon />}
         ];
 
         return (
@@ -122,7 +127,10 @@ class About extends React.Component<{}, AboutState> {
                             className={`tech-header ${tech.items.length > 0 ? 'has-dropdown' : ''}`}
                             onClick={() => tech.items.length > 0 && this.toggleDropdown(index)}
                         >
-                            <span>{tech.name}</span>
+                            <span className="tech-name-with-icon">
+                                <span className="tech-icon">{tech.icon}</span>
+                                <span>{tech.name}</span>
+                            </span>
                             {tech.items.length > 0 && (
                                 <span className={`dropdown-arrow ${this.state.openDropdowns.has(index) ? 'open' : ''}`}>
                                     ▼

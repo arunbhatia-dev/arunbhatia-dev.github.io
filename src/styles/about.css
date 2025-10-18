@@ -27,6 +27,7 @@
   font-size: 3rem;
   font-weight: 700;
   color: var(--lightest-slate);
+  margin-top: 0rem;
   margin-bottom: 2rem;
   position: relative;
   text-align: left;
@@ -117,6 +118,22 @@
 
 .tech-header.has-dropdown:hover {
   background-color: var(--lightest-navy);
+}
+
+.tech-name-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tech-icon {
+  display: flex;
+  align-items: center;
+  color: var(--green);
+}
+
+.tech-icon svg {
+  font-size: 1.5rem;
 }
 
 .dropdown-arrow {
@@ -210,6 +227,10 @@
     padding: 0.9rem;
   }
 
+  .tech-icon svg {
+    font-size: 1.3rem;
+  }
+
   .tech-dropdown-item {
     font-size: 0.85rem;
     padding: 0.65rem 0.9rem;
@@ -241,6 +262,14 @@
   .tech-header {
     font-size: 0.9rem;
     padding: 0.8rem;
+  }
+
+  .tech-icon svg {
+    font-size: 1.2rem;
+  }
+
+  .tech-name-with-icon {
+    gap: 0.5rem;
   }
 
   .tech-dropdown-item {
