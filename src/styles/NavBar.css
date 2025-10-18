@@ -18,7 +18,7 @@
 .navbar-brand {
   color: var(--lightest-slate);
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -39,7 +39,7 @@
   color: var(--light-slate);
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
   transition: color 0.3s ease;
   white-space: nowrap;
 }
