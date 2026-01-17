@@ -28,7 +28,7 @@
   background: var(--accent-secondary);
 }
 
-/* Cursor ring - follows with delay */
+/* Cursor ring - follows closely */
 .cursor-ring {
   position: fixed;
   width: 40px;
@@ -39,11 +39,7 @@
   z-index: 10000;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-  /* Smooth follow effect */
-  transition-property: opacity, width, height, border-color, background, left, top;
-  transition-duration: 0.3s, 0.3s, 0.3s, 0.3s, 0.3s, 0.15s, 0.15s;
-  transition-timing-function: ease, ease, ease, ease, ease, ease-out, ease-out;
+  transition: opacity 0.3s ease, width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
 .cursor-ring.visible {

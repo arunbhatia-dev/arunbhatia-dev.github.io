@@ -1,15 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../styles/CustomCursor.css';
 
 const CustomCursor: React.FC = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Don't run on touch devices
+    if ('ontouchstart' in window) return;
+
     const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      const { clientX, clientY } = e;
+
+      // Update dot position directly (no lag)
+      if (dotRef.current) {
+        dotRef.current.style.left = `${clientX}px`;
+        dotRef.current.style.top = `${clientY}px`;
+      }
+
+      // Update ring position directly (no lag)
+      if (ringRef.current) {
+        ringRef.current.style.left = `${clientX}px`;
+        ringRef.current.style.top = `${clientY}px`;
+      }
+
       if (!isVisible) setIsVisible(true);
     };
 
@@ -71,18 +88,12 @@ const CustomCursor: React.FC = () => {
   return (
     <>
       <div
+        ref={dotRef}
         className={`cursor-dot ${isVisible ? 'visible' : ''} ${isClicking ? 'clicking' : ''}`}
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-        }}
       />
       <div
+        ref={ringRef}
         className={`cursor-ring ${isVisible ? 'visible' : ''} ${isHovering ? 'hovering' : ''} ${isClicking ? 'clicking' : ''}`}
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-        }}
       />
     </>
   );
