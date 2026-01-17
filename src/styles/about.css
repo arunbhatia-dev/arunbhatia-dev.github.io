@@ -160,15 +160,21 @@
 .tech-icon {
   display: flex;
   align-items: center;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.tech-item:hover .tech-icon {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .tech-icon svg {
-  font-size: 1.4rem;
-  color: var(--accent-primary);
+  font-size: 1.25rem;
 }
 
 .dropdown-arrow {

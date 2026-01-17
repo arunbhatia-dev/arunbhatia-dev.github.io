@@ -8,6 +8,7 @@ import "../styles/NavBar.css";
 const NavBar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("intro");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +16,28 @@ const NavBar: React.FC = () => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = ["intro", "about", "experience", "education", "certifications", "projects", "contact"];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: "-80px 0px -50% 0px" }
+    );
+
+    sections.forEach((sectionId) => {
+      const element = document.getElementById(sectionId);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const toggleMenu = () => {
@@ -54,7 +77,7 @@ const NavBar: React.FC = () => {
           <a
             key={link.href}
             href={link.href}
-            className="nav-link"
+            className={`nav-link ${activeSection === link.href.slice(1) ? 'active' : ''}`}
             onClick={closeMenu}
             style={{ animationDelay: `${index * 0.1}s` }}
           >

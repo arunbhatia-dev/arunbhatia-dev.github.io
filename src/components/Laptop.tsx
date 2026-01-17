@@ -49,20 +49,48 @@ function Model({ open, hinge, ...props }: ModelProps) {
 
 export default function Laptop() {
   const [open, setOpen] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
   const props = useSpring({ open: Number(open) })
 
+  const handleToggle = () => {
+    setOpen(!open)
+  }
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      e.preventDefault()
+      handleToggle()
+    }
+
+    container.addEventListener('touchend', handleTouchEnd, { passive: false })
+    return () => container.removeEventListener('touchend', handleTouchEnd)
+  }, [open])
+
   return (
-    <div style={{ width: '100%', height: '100%' }}>
+    <div
+      ref={containerRef}
+      className="laptop-canvas-container"
+      style={{
+        width: '100%',
+        height: '100%',
+        touchAction: 'none',
+        cursor: 'pointer'
+      }}
+    >
       <Canvas dpr={[1, 2]} camera={{ position: [0, 0, -30], fov: 35 }}>
         <three.pointLight position={[10, 10, 10]} intensity={1.5} />
         <Suspense fallback={null}>
-          <group rotation={[0, Math.PI, 0]} onClick={(e: ThreeEvent<MouseEvent>) => (e.stopPropagation(), setOpen(!open))}>
+          <group rotation={[0, Math.PI, 0]} onClick={(e: ThreeEvent<MouseEvent>) => (e.stopPropagation(), handleToggle())}>
             <Model open={open} hinge={props.open.to([0, 1], [1.575, -0.425])} />
           </group>
           <Environment preset="city" />
         </Suspense>
         <ContactShadows position={[0, -4.5, 0]} opacity={0.4} scale={20} blur={1.75} far={4.5} />
       </Canvas>
+      <p className="laptop-hint">{open ? 'Tap to close' : 'Tap to open'}</p>
     </div>
   )
 }

@@ -102,6 +102,23 @@
   background: rgba(99, 102, 241, 0.1);
 }
 
+.nav-link.active {
+  color: var(--accent-primary);
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: var(--gradient-primary);
+  border-radius: 1px;
+}
+
 .navbar-right {
   display: flex;
   align-items: center;

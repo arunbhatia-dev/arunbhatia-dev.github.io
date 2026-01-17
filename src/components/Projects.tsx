@@ -2,6 +2,12 @@ import React from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";
+import MemoryIcon from "@mui/icons-material/Memory";
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import CloudIcon from "@mui/icons-material/Cloud";
+import ScienceIcon from "@mui/icons-material/Science";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import WebIcon from "@mui/icons-material/Web";
 import "../styles/Projects.css";
 
 interface Project {
@@ -12,6 +18,8 @@ interface Project {
     live?: string;
     featured?: boolean;
     image?: string;
+    icon?: React.ReactNode;
+    gradient?: string;
 }
 
 interface ProjectsState {
@@ -56,6 +64,8 @@ class Projects extends React.Component<{}, ProjectsState> {
                 technologies: ["Python", "C", "Machine Learning", "Raspberry Pi", "SPI", "GPIO"],
                 github: "https://github.com/arunbhatia-dev/Savox2---Prototype",
                 featured: true,
+                icon: <MemoryIcon />,
+                gradient: "linear-gradient(135deg, #c51a4a 0%, #a855f7 100%)",
             },
             {
                 title: "Federated Learning - Water Quality",
@@ -63,6 +73,8 @@ class Projects extends React.Component<{}, ProjectsState> {
                 technologies: ["Python", "Jupyter", "Federated Learning", "TensorFlow", "Pandas"],
                 github: "https://github.com/arunbhatia-dev/Federated-Learning",
                 featured: true,
+                icon: <PsychologyIcon />,
+                gradient: "linear-gradient(135deg, #6366f1 0%, #22d3ee 100%)",
             },
             {
                 title: "Delivery Time Weather Analysis",
@@ -70,6 +82,8 @@ class Projects extends React.Component<{}, ProjectsState> {
                 technologies: ["Python", "Jupyter", "Scikit-learn", "Pandas", "Data Analysis"],
                 github: "https://github.com/arunbhatia-dev/Data-science-and-ML-project",
                 featured: true,
+                icon: <CloudIcon />,
+                gradient: "linear-gradient(135deg, #10b981 0%, #6366f1 100%)",
             },
         ];
 
@@ -79,12 +93,16 @@ class Projects extends React.Component<{}, ProjectsState> {
                 description: "Statistical analysis of heart failure clinical records using Bayesian methods. Comprehensive R-based analysis with detailed report.",
                 technologies: ["R", "Bayesian Statistics", "RMarkdown", "Data Analysis"],
                 github: "https://github.com/arunbhatia-dev/Bayesian-Data-Analysis",
+                icon: <ScienceIcon />,
+                gradient: "linear-gradient(135deg, #276DC3 0%, #1e3a5f 100%)",
             },
             {
                 title: "Aalto Campus Adventure Game",
                 description: "Text-based adventure game set at Aalto University campus. Navigate through locations, complete objectives, and solve challenges.",
                 technologies: ["Scala", "Functional Programming", "OOP"],
                 github: "https://github.com/arunbhatia-dev/Aalto-Game---O2",
+                icon: <SportsEsportsIcon />,
+                gradient: "linear-gradient(135deg, #dc322f 0%, #ff6b6b 100%)",
             },
             {
                 title: "Portfolio Website",
@@ -92,6 +110,8 @@ class Projects extends React.Component<{}, ProjectsState> {
                 technologies: ["React", "TypeScript", "Three.js", "CSS"],
                 github: "https://github.com/arunbhatia-dev/arunbhatia-dev.github.io",
                 live: "https://arunbhatia-dev.github.io",
+                icon: <WebIcon />,
+                gradient: "linear-gradient(135deg, #61dafb 0%, #6366f1 100%)",
             },
         ];
 
@@ -114,7 +134,8 @@ class Projects extends React.Component<{}, ProjectsState> {
                                 className={`featured-project ${index % 2 === 1 ? 'reverse' : ''}`}
                                 style={{ animationDelay: `${index * 0.2}s` }}
                             >
-                                <div className="project-image">
+                                <div className="project-image" style={{ background: project.gradient }}>
+                                    <div className="project-image-icon">{project.icon}</div>
                                     <div className="project-image-overlay" />
                                 </div>
                                 <div className="project-info">

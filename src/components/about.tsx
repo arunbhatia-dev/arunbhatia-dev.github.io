@@ -54,8 +54,8 @@ class About extends React.Component<{}, AboutState> {
 
     renderTechStack = () => {
         const tech_stack = [
-            { name: "Typescript", items: [], icon: <CodeIcon /> },
-            { name: "JavaScript ES6+", items: ["React", "Node.js"], icon: <JavascriptIcon /> },
+            { name: "TypeScript", items: [], icon: <CodeIcon />, color: "#3178c6" },
+            { name: "JavaScript ES6+", items: ["React", "Node.js"], icon: <JavascriptIcon />, color: "#f7df1e" },
             { name: "Python", items: [
                 "Scikit-learn",
                 "TensorFlow",
@@ -68,9 +68,9 @@ class About extends React.Component<{}, AboutState> {
                 "FastAPI",
                 "Flask",
                 "PySpark"
-            ], icon: <CodeIcon />},
-            { name: "Scala", items: [], icon: <CodeIcon /> },
-            { name: "C", items: [], icon: <CodeIcon /> },
+            ], icon: <CodeIcon />, color: "#3776ab" },
+            { name: "Scala", items: [], icon: <CodeIcon />, color: "#dc322f" },
+            { name: "C", items: [], icon: <CodeIcon />, color: "#a8b9cc" },
             { name: "AI/ML", items: [
                 "Machine Learning",
                 "Deep Learning",
@@ -79,12 +79,12 @@ class About extends React.Component<{}, AboutState> {
                 "Reinforcement Learning",
                 "Retrieval Augmented Generation (RAG)",
                 "Model Context Protocol (MCP)",
-            ], icon: <PsychologyIcon />},
+            ], icon: <PsychologyIcon />, color: "#a855f7" },
             { name: "Databases", items: [
                 "PostgreSQL",
                 "MongoDB",
                 "Redis",
-            ], icon: <StorageIcon />},
+            ], icon: <StorageIcon />, color: "#336791" },
             { name: "AWS", items: [
                 "Application Load Balancer",
                 "EC2",
@@ -105,7 +105,7 @@ class About extends React.Component<{}, AboutState> {
                 "CloudWatch",
                 "IAM",
                 "Secrets Manager",
-            ], icon: <CloudIcon />},
+            ], icon: <CloudIcon />, color: "#ff9900" },
             { name: "Azure", items: [
                 "App Services",
                 "Functions",
@@ -116,7 +116,7 @@ class About extends React.Component<{}, AboutState> {
                 "Container Instances",
                 "Container Registry",
                 "Azure DevOps",
-            ], icon: <CloudIcon />}
+            ], icon: <CloudIcon />, color: "#0078d4" }
         ];
 
         return (
@@ -128,7 +128,7 @@ class About extends React.Component<{}, AboutState> {
                             onClick={() => tech.items.length > 0 && this.toggleDropdown(index)}
                         >
                             <span className="tech-name-with-icon">
-                                <span className="tech-icon">{tech.icon}</span>
+                                <span className="tech-icon" style={{ color: tech.color }}>{tech.icon}</span>
                                 <span>{tech.name}</span>
                             </span>
                             {tech.items.length > 0 && (
