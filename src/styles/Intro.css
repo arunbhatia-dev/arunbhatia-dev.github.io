@@ -4,20 +4,48 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 2rem 2rem 2rem;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.laptop-container {
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  margin-bottom: 2rem;
 }
 
 #intro-desc {
   max-width: 800px;
   width: 100%;
+  text-align: center;
+}
+
+.intro-hello {
+  color: var(--green);
+  font-family: 'Fira Code', 'SF Mono', monospace;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+  animation-delay: 0.1s;
 }
 
 .intro-greeting {
-  font-size: 4rem;
-  font-weight: 550;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
   color: var(--lightest-slate);
-  margin-bottom: 2rem;
-  animation: fadeInUp 1s ease-out;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
 }
 
 .cursor {
@@ -27,8 +55,8 @@
 }
 
 .intro-name {
-  color: var(--green);
-  font-weight: 750;
+  color: var(--lightest-slate);
+  font-weight: 700;
 }
 
 @keyframes blink {
@@ -40,10 +68,36 @@
   }
 }
 
+.intro-tagline {
+  font-size: clamp(1.5rem, 5vw, 3.5rem);
+  font-weight: 600;
+  color: var(--slate);
+  margin: 0.5rem 0 2rem 0;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.intro-description {
+  margin-bottom: 2.5rem;
+}
+
+.fade-in-text {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--slate);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -51,53 +105,116 @@
   }
 }
 
-.intro-description {
-  margin-top: 2rem;
+.intro-cta {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+  animation-delay: 0.7s;
 }
 
-.fade-in-text {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--slate);
-  line-height: 1.6;
-  margin: 0;
-  animation: fadeIn 2s ease-in 1s both;
+.cta-button {
+  display: inline-block;
+  padding: 1.25rem 2rem;
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  color: var(--green);
+  font-family: 'Fira Code', 'SF Mono', monospace;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background: transparent;
+}
+
+.cta-button:hover {
+  background-color: rgba(100, 255, 218, 0.1);
+  transform: translateY(-3px);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--green);
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards, bounce 2s infinite;
+  animation-delay: 1.5s, 2s;
+}
+
+.scroll-indicator svg {
+  font-size: 2.5rem;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
   }
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   #intro {
-    padding: 0.5rem 1rem 2rem 1rem;
+    padding: 0 1rem;
   }
 
-  .intro-greeting {
-    font-size: 2.5rem;
+  .laptop-container {
+    height: 250px;
+    max-width: 400px;
+  }
+
+  .intro-hello {
+    font-size: 0.9rem;
+  }
+
+  .intro-tagline {
+    margin-bottom: 1.5rem;
   }
 
   .fade-in-text {
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .scroll-indicator {
+    bottom: 2rem;
+  }
+
+  .scroll-indicator svg {
+    font-size: 2rem;
   }
 }
 
 @media (max-width: 480px) {
   #intro {
-    padding: 0.5rem 0.5rem 1rem 0.5rem;
+    padding: 0 0.5rem;
   }
 
-  .intro-greeting {
-    font-size: 2rem;
+  .laptop-container {
+    height: 200px;
+    max-width: 300px;
+  }
+
+  .intro-hello {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
   }
 
   .fade-in-text {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 }

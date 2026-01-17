@@ -1,0 +1,123 @@
+import React from "react";
+import VerifiedIcon from "@mui/icons-material/Verified";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import "../styles/Certifications.css";
+
+interface Certification {
+    name: string;
+    issuer: string;
+    date: string;
+    credentialUrl?: string;
+    badge?: string;
+}
+
+interface CertificationsState {
+    isVisible: boolean;
+}
+
+class Certifications extends React.Component<{}, CertificationsState> {
+    private sectionRef: React.RefObject<HTMLDivElement | null>;
+
+    constructor(props: {}) {
+        super(props);
+        this.state = {
+            isVisible: false
+        };
+        this.sectionRef = React.createRef<HTMLDivElement>();
+    }
+
+    componentDidMount() {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        this.setState({ isVisible: true });
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        if (this.sectionRef.current) {
+            observer.observe(this.sectionRef.current);
+        }
+    }
+
+    render() {
+        const certifications: Certification[] = [
+            {
+                name: "AWS Certified Solutions Architect - Associate",
+                issuer: "Amazon Web Services",
+                date: "2024",
+                credentialUrl: "#",
+            },
+            {
+                name: "AWS Certified Machine Learning - Specialty",
+                issuer: "Amazon Web Services",
+                date: "2024",
+                credentialUrl: "#",
+            },
+            {
+                name: "Microsoft Azure AI Fundamentals (AI-900)",
+                issuer: "Microsoft",
+                date: "2023",
+                credentialUrl: "#",
+            },
+            {
+                name: "TensorFlow Developer Certificate",
+                issuer: "Google",
+                date: "2023",
+                credentialUrl: "#",
+            },
+            {
+                name: "Deep Learning Specialization",
+                issuer: "Coursera / DeepLearning.AI",
+                date: "2022",
+                credentialUrl: "#",
+            },
+        ];
+
+        return (
+            <div
+                id="certifications"
+                ref={this.sectionRef}
+                className={`certifications-section ${this.state.isVisible ? 'fade-in' : ''}`}
+            >
+                <div className="certifications-content">
+                    <h2 className="certifications-title">/ certifications</h2>
+
+                    <div className="certifications-grid">
+                        {certifications.map((cert, index) => (
+                            <div
+                                key={index}
+                                className="certification-card"
+                                style={{ animationDelay: `${index * 0.1}s` }}
+                            >
+                                <div className="cert-icon">
+                                    <VerifiedIcon />
+                                </div>
+                                <div className="cert-details">
+                                    <h3 className="cert-name">{cert.name}</h3>
+                                    <p className="cert-issuer">{cert.issuer}</p>
+                                    <p className="cert-date">{cert.date}</p>
+                                </div>
+                                {cert.credentialUrl && cert.credentialUrl !== "#" && (
+                                    <a
+                                        href={cert.credentialUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="cert-link"
+                                    >
+                                        <OpenInNewIcon />
+                                    </a>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default Certifications;

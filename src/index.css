@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
 
 :root {
   --navy: #0a192f;
@@ -10,10 +11,18 @@
   --white: #e6f1ff;
   --green: #64ffda;
   --green-bright: #64ffda;
+
+  /* Animation timings */
+  --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -25,9 +34,59 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--navy);
+  color: var(--slate);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+#content {
+  padding-top: 0;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: 'Fira Code', 'SF Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--lightest-navy);
+  color: var(--lightest-slate);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--navy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lightest-navy);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--slate);
+}
+
+/* Links */
+a {
+  color: var(--green);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus {
+  outline: 2px dashed var(--green);
+  outline-offset: 3px;
+}
+
+/* Smooth section transitions */
+section {
+  transition: opacity 0.5s ease;
 }
