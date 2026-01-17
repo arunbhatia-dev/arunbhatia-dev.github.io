@@ -51,7 +51,9 @@ const CustomCursor: React.FC = () => {
         target.closest('.timeline-card') ||
         target.closest('.cta-button') ||
         target.closest('.nav-link') ||
-        target.closest('.icon-link')
+        target.closest('.icon-link') ||
+        target.closest('.laptop-canvas-container') ||
+        target.closest('.cert-link')
       ) {
         setIsHovering(true);
       }
@@ -89,7 +91,7 @@ const CustomCursor: React.FC = () => {
     <>
       <div
         ref={dotRef}
-        className={`cursor-dot ${isVisible ? 'visible' : ''} ${isClicking ? 'clicking' : ''}`}
+        className={`cursor-dot ${isVisible ? 'visible' : ''} ${isHovering ? 'hovering' : ''} ${isClicking ? 'clicking' : ''}`}
       />
       <div
         ref={ringRef}
