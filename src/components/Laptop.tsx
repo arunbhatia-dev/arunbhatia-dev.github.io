@@ -96,7 +96,10 @@ export default function Laptop() {
       <Canvas
         dpr={[1, 2]}
         camera={{ position: [0, 0, -30], fov: 35 }}
-        gl={{ alpha: true, antialias: true }}
+        gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
+        onCreated={({ gl }) => {
+          gl.setClearColor(0x000000, 0)
+        }}
         style={{ background: 'transparent' }}
       >
         <three.pointLight position={[10, 10, 10]} intensity={1.5} />

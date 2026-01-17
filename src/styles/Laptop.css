@@ -10,15 +10,22 @@
 .laptop-canvas-container {
   position: relative;
   opacity: 0;
-  transition: opacity 0.6s ease-out;
+  transform: scale(0.9) translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .laptop-canvas-container.loaded {
   opacity: 1;
+  transform: scale(1) translateY(0);
 }
 
+/* Force canvas to be transparent */
+.laptop-container,
+.laptop-canvas-container,
+.laptop-container canvas,
 .laptop-canvas-container canvas {
   background: transparent !important;
+  background-color: transparent !important;
 }
 
 .laptop-hint {

@@ -225,9 +225,7 @@
   height: 450px;
   position: relative;
   z-index: 10;
-  opacity: 0;
-  animation: fadeInScale 0.8s ease forwards;
-  animation-delay: 0.4s;
+  background: transparent;
 }
 
 @keyframes fadeInScale {
