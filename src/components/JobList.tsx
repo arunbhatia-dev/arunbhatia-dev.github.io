@@ -8,6 +8,7 @@ interface Experience {
     jobTitle: string;
     company: string;
     duration: string;
+    year: string;
     description: string[];
     icon: "work" | "school" | "research";
     current?: boolean;
@@ -15,6 +16,7 @@ interface Experience {
 
 interface JobListState {
     isVisible: boolean;
+    selectedIndex: number;
 }
 
 class JobList extends React.Component<{}, JobListState> {
@@ -23,7 +25,8 @@ class JobList extends React.Component<{}, JobListState> {
     constructor(props: {}) {
         super(props);
         this.state = {
-            isVisible: false
+            isVisible: false,
+            selectedIndex: 0
         };
         this.sectionRef = React.createRef<HTMLDivElement>();
     }
@@ -59,59 +62,70 @@ class JobList extends React.Component<{}, JobListState> {
     render() {
         const experiences: Experience[] = [
             {
-                jobTitle: "Software Developer",
-                company: "Digia",
-                duration: "August 2024 - Present",
+                jobTitle: "Research Assistant",
+                company: "Aalto University",
+                duration: "May 2022 - August 2022",
+                year: "2022",
                 description: [
-                    "Working on AI and Data Driven projects, developing and deploying scalable software solutions",
-                    "Contributing to system design and architecture decisions",
-                    "Improving user experience for thousands of daily users"
+                    "Analyzed RGB and thermal images for research purposes",
+                    "Compared image processing and registration algorithms in both RGB and thermal cases",
+                    "Developed Python-based tools for image analysis and processing"
                 ],
-                icon: "work",
-                current: true
-            },
-            {
-                jobTitle: "Data Scientist",
-                company: "Kelluu",
-                duration: "September 2023 - August 2024",
-                description: [
-                    "Analyzed large image datasets using computer vision techniques",
-                    "Developed Machine Learning algorithms for object detection",
-                    "Improved data processing pipeline efficiency"
-                ],
-                icon: "work"
-            },
-            {
-                jobTitle: "ML Engineer Trainee",
-                company: "Savox Communications",
-                duration: "May 2023 - September 2023",
-                description: [
-                    "Built prototype intelligent audio classification device on Raspberry Pi",
-                    "Led audio classification component using machine learning techniques"
-                ],
-                icon: "work"
+                icon: "research"
             },
             {
                 jobTitle: "Teaching Assistant",
                 company: "Aalto University",
                 duration: "January 2022 - May 2023",
+                year: "2022-23",
                 description: [
-                    "TA for 'Use of Computer Science in Applications' course",
-                    "Conducted weekly sessions covering Python, SQL, HTML, CSS, JavaScript"
+                    "Teaching assistant for 'Use of Computer Science in Applications' course",
+                    "Conducted weekly exercise sessions and provided support to students",
+                    "Topics covered: Python, SQL, Databases, HTML, CSS, JavaScript"
                 ],
                 icon: "school"
             },
             {
-                jobTitle: "Research Assistant",
-                company: "Aalto University",
-                duration: "May 2022 - August 2022",
+                jobTitle: "ML Engineer Trainee",
+                company: "Savox Communications",
+                duration: "May 2023 - September 2023",
+                year: "2023",
                 description: [
-                    "Analyzed RGB and thermal images for research",
-                    "Developed Python tools for image analysis and processing"
+                    "Built prototype intelligent audio classification device using Raspberry Pi",
+                    "Led audio classification component using machine learning techniques",
+                    "Implemented SPI communication for hardware integration"
                 ],
-                icon: "research"
+                icon: "work"
+            },
+            {
+                jobTitle: "Data Scientist",
+                company: "Kelluu",
+                duration: "September 2023 - August 2024",
+                year: "2023-24",
+                description: [
+                    "Analyzed large image datasets using computer vision techniques",
+                    "Developed Machine Learning algorithms for object detection",
+                    "Improved data processing pipeline, reducing processing time significantly"
+                ],
+                icon: "work"
+            },
+            {
+                jobTitle: "Software Developer",
+                company: "Digia",
+                duration: "August 2024 - Present",
+                year: "2024",
+                description: [
+                    "Working on AI and Data Driven projects, developing scalable solutions",
+                    "Contributing to system design and architecture decisions",
+                    "Improving user experience for thousands of daily users"
+                ],
+                icon: "work",
+                current: true
             }
         ];
+
+        const { selectedIndex } = this.state;
+        const selectedExp = experiences[selectedIndex];
 
         return (
             <div
@@ -122,34 +136,55 @@ class JobList extends React.Component<{}, JobListState> {
                 <div className="experience-content">
                     <h2 className="experience-title">/ experience</h2>
 
-                    <div className="timeline">
-                        <div className="timeline-line" />
-
-                        {experiences.map((exp, index) => (
+                    {/* Horizontal Timeline */}
+                    <div className="h-timeline">
+                        <div className="h-timeline-track">
+                            <div className="h-timeline-line" />
                             <div
-                                key={index}
-                                className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
-                                style={{ animationDelay: `${index * 0.15}s` }}
-                            >
-                                <div className={`timeline-dot ${exp.current ? 'current' : ''}`}>
-                                    {this.getIcon(exp.icon)}
-                                </div>
+                                className="h-timeline-progress"
+                                style={{ width: `${(selectedIndex / (experiences.length - 1)) * 100}%` }}
+                            />
+                        </div>
 
-                                <div className="timeline-card">
-                                    <div className="timeline-card-header">
-                                        <span className="timeline-duration">{exp.duration}</span>
-                                        {exp.current && <span className="current-badge">Current</span>}
+                        <div className="h-timeline-items">
+                            {experiences.map((exp, index) => (
+                                <div
+                                    key={index}
+                                    className={`h-timeline-item ${selectedIndex === index ? 'active' : ''} ${exp.current ? 'current' : ''}`}
+                                    onClick={() => this.setState({ selectedIndex: index })}
+                                    style={{ animationDelay: `${index * 0.1}s` }}
+                                >
+                                    <div className={`h-timeline-dot ${selectedIndex === index ? 'active' : ''} ${exp.current ? 'current' : ''}`}>
+                                        {this.getIcon(exp.icon)}
                                     </div>
-                                    <h3 className="timeline-role">{exp.jobTitle}</h3>
-                                    <h4 className="timeline-company">{exp.company}</h4>
-                                    <ul className="timeline-description">
-                                        {exp.description.map((item, idx) => (
-                                            <li key={idx}>{item}</li>
-                                        ))}
-                                    </ul>
+                                    <div className="h-timeline-label">
+                                        <span className="h-timeline-year">{exp.year}</span>
+                                        <span className="h-timeline-company">{exp.company}</span>
+                                        <span className="h-timeline-role">{exp.jobTitle}</span>
+                                    </div>
                                 </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Detail Card */}
+                    <div className="h-timeline-detail" key={selectedIndex}>
+                        <div className="detail-header">
+                            <div className="detail-icon">
+                                {this.getIcon(selectedExp.icon)}
                             </div>
-                        ))}
+                            <div className="detail-title-group">
+                                <h3 className="detail-role">{selectedExp.jobTitle}</h3>
+                                <h4 className="detail-company">{selectedExp.company}</h4>
+                                <span className="detail-duration">{selectedExp.duration}</span>
+                            </div>
+                            {selectedExp.current && <span className="current-badge">Current</span>}
+                        </div>
+                        <ul className="detail-description">
+                            {selectedExp.description.map((item, idx) => (
+                                <li key={idx}>{item}</li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </div>
