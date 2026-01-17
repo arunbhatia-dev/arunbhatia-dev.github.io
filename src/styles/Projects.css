@@ -79,7 +79,7 @@
 }
 
 .project-image {
-  grid-column: 1 / 8;
+  grid-column: 1 / 6;
   grid-row: 1;
   height: 320px;
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%);
@@ -129,7 +129,7 @@
 }
 
 .project-info {
-  grid-column: 7 / -1;
+  grid-column: 6 / -1;
   grid-row: 1;
   text-align: right;
   position: relative;
@@ -137,11 +137,11 @@
 }
 
 .featured-project.reverse .project-image {
-  grid-column: 6 / -1;
+  grid-column: 8 / -1;
 }
 
 .featured-project.reverse .project-info {
-  grid-column: 1 / 7;
+  grid-column: 1 / 8;
   text-align: left;
 }
 
