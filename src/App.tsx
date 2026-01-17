@@ -7,11 +7,13 @@ import Education from './components/Education';
 import Certifications from './components/Certifications';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import CustomCursor from './components/CustomCursor';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
+      <CustomCursor />
       <NavBar/>
       <main id="content">
         <Intro/>
