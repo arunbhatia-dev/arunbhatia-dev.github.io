@@ -154,10 +154,10 @@ class About extends React.Component<{}, AboutState> {
         const currently = (
             <p>
                 I am currently a <b>Software Engineer</b> at
-                <a href="https://digia.com/en/"> Digia</a>, working on projects related to
+                <a href="https://digia.com/en/" target="_blank" rel="noopener noreferrer"> Digia</a>, working on projects related to
                 AI, Machine Learning and Big Data. My role involves developing scalable software solutions that
                 solve complex problems. I also hold a <b>Master's of Science</b> degree
-                from <a href="https://www.aalto.fi/en"> Aalto University</a>.
+                from <a href="https://www.aalto.fi/en" target="_blank" rel="noopener noreferrer"> Aalto University</a>.
             </p>
         );
 
