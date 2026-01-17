@@ -46,34 +46,10 @@ class Certifications extends React.Component<{}, CertificationsState> {
     render() {
         const certifications: Certification[] = [
             {
-                name: "AWS Certified Solutions Architect - Associate",
+                name: "AWS Certified Cloud Practitioner",
                 issuer: "Amazon Web Services",
                 date: "2024",
-                credentialUrl: "#",
-            },
-            {
-                name: "AWS Certified Machine Learning - Specialty",
-                issuer: "Amazon Web Services",
-                date: "2024",
-                credentialUrl: "#",
-            },
-            {
-                name: "Microsoft Azure AI Fundamentals (AI-900)",
-                issuer: "Microsoft",
-                date: "2023",
-                credentialUrl: "#",
-            },
-            {
-                name: "TensorFlow Developer Certificate",
-                issuer: "Google",
-                date: "2023",
-                credentialUrl: "#",
-            },
-            {
-                name: "Deep Learning Specialization",
-                issuer: "Coursera / DeepLearning.AI",
-                date: "2022",
-                credentialUrl: "#",
+                credentialUrl: "https://aws.amazon.com/certification/certified-cloud-practitioner/",
             },
         ];
 

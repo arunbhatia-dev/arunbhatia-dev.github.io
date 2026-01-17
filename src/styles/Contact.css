@@ -1,162 +1,206 @@
 #contact {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 6rem 2rem 0;
-    background-color: var(--navy);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 0;
+  position: relative;
 }
 
 .contact-section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-    width: 100%;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  width: 100%;
 }
 
 .contact-section.fade-in {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .contact-content {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    padding-bottom: 6rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 6rem;
 }
 
 .contact-overline {
-    color: var(--green);
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 1rem;
-    margin-bottom: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .contact-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: var(--lightest-slate);
-    margin: 0 0 1.5rem 0;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 1.5rem 0;
 }
 
 .contact-description {
-    color: var(--slate);
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 3rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 3rem;
 }
 
 .contact-button {
-    display: inline-block;
-    padding: 1.25rem 2.5rem;
-    border: 1px solid var(--green);
-    border-radius: 4px;
-    color: var(--green);
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-    background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .contact-button:hover {
-    background-color: rgba(100, 255, 218, 0.1);
-    transform: translateY(-3px);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+  color: white;
+}
+
+.contact-button:hover::before {
+  opacity: 1;
 }
 
 .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 4rem;
 }
 
 .social-link {
-    color: var(--light-slate);
-    transition: all 0.3s ease;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 26, 46, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
 }
 
 .social-link:hover {
-    color: var(--green);
-    transform: translateY(-3px);
+  color: var(--accent-primary);
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .social-link svg {
-    font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 /* Footer */
 .footer {
-    width: 100%;
-    padding: 1.5rem 0;
-    margin-top: auto;
+  width: 100%;
+  padding: 2rem 0;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .footer-content {
-    text-align: center;
+  text-align: center;
 }
 
 .footer-link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .footer-link p {
-    color: var(--slate);
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.85rem;
-    margin: 0;
-    transition: color 0.3s ease;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  margin: 0;
+  transition: all 0.3s ease;
+  color: var(--text-muted);
 }
 
 .footer-link:hover p {
-    color: var(--green);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    #contact {
-        padding: 4rem 1rem 0;
-    }
+  #contact {
+    padding: 4rem 1rem 0;
+  }
 
-    .contact-title {
-        font-size: 2.5rem;
-    }
+  .contact-title {
+    font-size: 2.25rem;
+  }
 
-    .contact-description {
-        font-size: 1rem;
-    }
+  .contact-description {
+    font-size: 1rem;
+  }
 
-    .contact-button {
-        padding: 1rem 2rem;
-        font-size: 0.9rem;
-    }
+  .contact-button {
+    padding: 0.875rem 2rem;
+    font-size: 0.9rem;
+  }
 
-    .social-links {
-        gap: 1.5rem;
-        margin-top: 3rem;
-    }
+  .social-links {
+    gap: 1rem;
+    margin-top: 3rem;
+  }
 
-    .social-link svg {
-        font-size: 1.5rem;
-    }
+  .social-link {
+    width: 44px;
+    height: 44px;
+  }
+
+  .social-link svg {
+    font-size: 1.3rem;
+  }
 }
 
 @media (max-width: 480px) {
-    #contact {
-        padding: 3rem 0.5rem 0;
-    }
+  #contact {
+    padding: 3rem 0.75rem 0;
+  }
 
-    .contact-title {
-        font-size: 2rem;
-    }
+  .contact-title {
+    font-size: 1.75rem;
+  }
 
-    .contact-description {
-        font-size: 0.95rem;
-    }
+  .contact-description {
+    font-size: 0.95rem;
+  }
 
-    .contact-content {
-        padding-bottom: 4rem;
-    }
+  .contact-content {
+    padding-bottom: 4rem;
+  }
 }

@@ -91,12 +91,13 @@ class JobList extends React.Component<{}, JobListState> {
                     "Topics/technologies covered: Python, SQL, Databases, HTML, CSS, JavaScript"
                 ]
             },
-            Digiole: {
-                jobTitle: "Data Analyst intern @",
+            "Aalto University (Research)": {
+                jobTitle: "Research Assistant @",
                 duration: "May 2022 - August 2022",
                 description: [
-                    "Data analysis of RGB and thermal image registration techniques",
-                    "Comparing the image processing and registration algorithms in both cases"
+                    "Analyzed RGB and thermal images for research purposes",
+                    "Compared image processing and registration algorithms in both RGB and thermal cases",
+                    "Developed Python-based tools for image analysis and processing"
                 ]
             }
         };

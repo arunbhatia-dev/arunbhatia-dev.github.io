@@ -51,65 +51,47 @@ class Projects extends React.Component<{}, ProjectsState> {
     render() {
         const featuredProjects: Project[] = [
             {
-                title: "AI-Powered Code Assistant",
-                description: "Built an intelligent code assistant using LLMs with RAG (Retrieval Augmented Generation) for context-aware code suggestions. Integrated with multiple IDE extensions and supports various programming languages.",
-                technologies: ["Python", "LangChain", "FastAPI", "React", "PostgreSQL", "Docker"],
-                github: "https://github.com/arunbhatia-dev",
+                title: "Intelligent Audio Listener",
+                description: "A prototype device that classifies sound sources and determines their directional location relative to the user. Built for Raspberry Pi with a pre-trained ML sound classification algorithm and SPI communication for hardware integration.",
+                technologies: ["Python", "C", "Machine Learning", "Raspberry Pi", "SPI", "GPIO"],
+                github: "https://github.com/arunbhatia-dev/Savox2---Prototype",
                 featured: true,
             },
             {
-                title: "Real-time Object Detection System",
-                description: "Developed a computer vision system for real-time object detection and tracking using deep learning. Optimized for edge deployment on single-board computers with TensorRT acceleration.",
-                technologies: ["Python", "PyTorch", "OpenCV", "TensorRT", "ONNX", "Raspberry Pi"],
-                github: "https://github.com/arunbhatia-dev",
+                title: "Federated Learning - Water Quality",
+                description: "Implementation of federated learning for water potability prediction. Enables distributed machine learning across multiple data sources while preserving data privacy, with comprehensive analysis and project report.",
+                technologies: ["Python", "Jupyter", "Federated Learning", "TensorFlow", "Pandas"],
+                github: "https://github.com/arunbhatia-dev/Federated-Learning",
                 featured: true,
             },
             {
-                title: "Scalable Data Pipeline",
-                description: "Architected and implemented a scalable ETL pipeline processing millions of records daily. Built with event-driven architecture and real-time analytics dashboards.",
-                technologies: ["PySpark", "AWS Glue", "Kafka", "Airflow", "Redshift", "Grafana"],
-                github: "https://github.com/arunbhatia-dev",
+                title: "Delivery Time Weather Analysis",
+                description: "Predictive modeling project investigating the impact of weather conditions on delivery times. Uses machine learning to unlock insights from delivery order data and weather patterns.",
+                technologies: ["Python", "Jupyter", "Scikit-learn", "Pandas", "Data Analysis"],
+                github: "https://github.com/arunbhatia-dev/Data-science-and-ML-project",
                 featured: true,
             },
         ];
 
         const otherProjects: Project[] = [
             {
-                title: "NLP Text Summarizer",
-                description: "Automatic text summarization tool using transformer models for document processing.",
-                technologies: ["Python", "HuggingFace", "Flask"],
-                github: "https://github.com/arunbhatia-dev",
+                title: "Bayesian Data Analysis",
+                description: "Statistical analysis of heart failure clinical records using Bayesian methods. Comprehensive R-based analysis with detailed report.",
+                technologies: ["R", "Bayesian Statistics", "RMarkdown", "Data Analysis"],
+                github: "https://github.com/arunbhatia-dev/Bayesian-Data-Analysis",
+            },
+            {
+                title: "Aalto Campus Adventure Game",
+                description: "Text-based adventure game set at Aalto University campus. Navigate through locations, complete objectives, and solve challenges.",
+                technologies: ["Scala", "Functional Programming", "OOP"],
+                github: "https://github.com/arunbhatia-dev/Aalto-Game---O2",
             },
             {
                 title: "Portfolio Website",
-                description: "Personal portfolio built with React and TypeScript featuring 3D animations.",
-                technologies: ["React", "TypeScript", "Three.js"],
+                description: "Personal portfolio built with React and TypeScript featuring interactive 3D laptop animation and modern design.",
+                technologies: ["React", "TypeScript", "Three.js", "CSS"],
                 github: "https://github.com/arunbhatia-dev/arunbhatia-dev.github.io",
                 live: "https://arunbhatia-dev.github.io",
-            },
-            {
-                title: "ML Model Deployment Platform",
-                description: "Self-service platform for deploying and monitoring ML models with A/B testing.",
-                technologies: ["Python", "FastAPI", "Docker", "Kubernetes"],
-                github: "https://github.com/arunbhatia-dev",
-            },
-            {
-                title: "Sentiment Analysis API",
-                description: "REST API for real-time sentiment analysis of social media content.",
-                technologies: ["Python", "TensorFlow", "Redis", "AWS Lambda"],
-                github: "https://github.com/arunbhatia-dev",
-            },
-            {
-                title: "Image Registration Tool",
-                description: "Tool for aligning and registering RGB and thermal images for analysis.",
-                technologies: ["Python", "OpenCV", "NumPy", "Scikit-image"],
-                github: "https://github.com/arunbhatia-dev",
-            },
-            {
-                title: "Audio Classification System",
-                description: "Edge-based audio classification for intelligent sound source detection.",
-                technologies: ["Python", "TensorFlow Lite", "librosa", "SBC"],
-                github: "https://github.com/arunbhatia-dev",
             },
         ];
 

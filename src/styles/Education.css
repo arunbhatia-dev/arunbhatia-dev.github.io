@@ -3,14 +3,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0rem 2rem 4rem 2rem;
-  background-color: var(--navy);
+  padding: 6rem 2rem;
+  position: relative;
 }
 
 .education-section {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .education-section.fade-in {
@@ -24,40 +24,55 @@
 }
 
 .education-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: var(--lightest-slate);
-  margin-top: 0rem;
+  color: var(--text-primary);
+  margin-top: 0;
   margin-bottom: 3rem;
   position: relative;
   text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.education-title::before {
+  content: '03.';
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .education-title::after {
   content: '';
-  display: block;
-  width: 100px;
-  height: 4px;
-  background-color: var(--green);
-  margin-top: 1rem;
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.3), transparent);
+  margin-left: 1rem;
 }
 
 .education-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .education-school {
-  background-color: var(--light-navy);
-  border-radius: 12px;
+  background: rgba(26, 26, 46, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
   padding: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .education-school:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(100, 255, 218, 0.15);
+  transform: translateY(-5px);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .school-header {
@@ -69,50 +84,74 @@
 }
 
 .school-icon {
-  color: var(--green);
   font-size: 2rem !important;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.school-icon svg {
+  color: var(--accent-primary);
 }
 
 .school-name {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  color: var(--lightest-slate);
+  color: var(--text-primary);
   margin: 0;
 }
 
 .degrees-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .degree-item {
   padding-left: 3rem;
   text-align: left;
+  position: relative;
+}
+
+.degree-item::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
 }
 
 .degree-name {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 500;
-  color: var(--light-slate);
-  margin: 0 0 0.5rem 0;
+  color: var(--text-secondary);
+  margin: 0 0 0.4rem 0;
   line-height: 1.5;
 }
 
 .degree-period {
-  font-size: 1rem;
-  color: var(--slate);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--text-muted);
   margin: 0;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   #education {
-    padding: 0rem 1rem 3rem 1rem;
+    padding: 4rem 1rem;
   }
 
   .education-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+
+  .education-title::before {
+    font-size: 1rem;
   }
 
   .education-school {
@@ -120,33 +159,40 @@
   }
 
   .school-icon {
-    font-size: 1.8rem !important;
+    font-size: 1.75rem !important;
   }
 
   .school-name {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   .degree-item {
-    padding-left: 2rem;
+    padding-left: 2.5rem;
   }
 
   .degree-name {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .degree-period {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
   #education {
-    padding: 0rem 0.5rem 2rem 0.5rem;
+    padding: 3rem 0.75rem;
   }
 
   .education-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .education-title::after {
+    display: none;
   }
 
   .education-school {
@@ -162,22 +208,28 @@
   }
 
   .school-name {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
   }
 
   .degrees-list {
-    gap: 1.25rem;
+    gap: 1rem;
   }
 
   .degree-item {
-    padding-left: 1.5rem;
+    padding-left: 2rem;
+  }
+
+  .degree-item::before {
+    left: 0.5rem;
+    width: 6px;
+    height: 6px;
   }
 
   .degree-name {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .degree-period {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }
