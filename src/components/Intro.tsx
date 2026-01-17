@@ -29,12 +29,12 @@ class Intro extends React.Component {
                     </div>
                     <h2 className="intro-tagline">
                       Software Engineer & <br/>
-                      <span className="highlight">AI Specialist</span>
+                      <span className="highlight">Technical Leader in AI</span>
                     </h2>
                     <div className="intro-description">
                       <p className="fade-in-text">
-                        Building intelligent systems that make a real difference.
-                        Passionate about AI, Machine Learning, and scalable solutions.
+                        I'm a software engineer from Helsinki, Finland. I'm fascinated by
+                        high-impact products and technologies that make a difference.
                       </p>
                     </div>
                     <div className="intro-cta">
