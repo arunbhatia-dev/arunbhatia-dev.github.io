@@ -26,7 +26,7 @@ class JobList extends React.Component<{}, JobListState> {
         super(props);
         this.state = {
             isVisible: false,
-            selectedIndex: 0
+            selectedIndex: 4
         };
         this.sectionRef = React.createRef<HTMLDivElement>();
     }
@@ -65,7 +65,7 @@ class JobList extends React.Component<{}, JobListState> {
                 jobTitle: "Research Assistant",
                 company: "Aalto University",
                 duration: "May 2022 - August 2022",
-                year: "2022",
+                year: "05/2022",
                 description: [
                     "Analyzed RGB and thermal images for research purposes",
                     "Compared image processing and registration algorithms in both RGB and thermal cases",
@@ -77,7 +77,7 @@ class JobList extends React.Component<{}, JobListState> {
                 jobTitle: "Teaching Assistant",
                 company: "Aalto University",
                 duration: "January 2022 - May 2023",
-                year: "2022-23",
+                year: "01/2022",
                 description: [
                     "Teaching assistant for 'Use of Computer Science in Applications' course",
                     "Conducted weekly exercise sessions and provided support to students",
@@ -89,7 +89,7 @@ class JobList extends React.Component<{}, JobListState> {
                 jobTitle: "ML Engineer Trainee",
                 company: "Savox Communications",
                 duration: "May 2023 - September 2023",
-                year: "2023",
+                year: "05/2023",
                 description: [
                     "Built prototype intelligent audio classification device using Raspberry Pi",
                     "Led audio classification component using machine learning techniques",
@@ -101,7 +101,7 @@ class JobList extends React.Component<{}, JobListState> {
                 jobTitle: "Data Scientist",
                 company: "Kelluu",
                 duration: "September 2023 - August 2024",
-                year: "2023-24",
+                year: "09/2023",
                 description: [
                     "Analyzed large image datasets using computer vision techniques",
                     "Developed Machine Learning algorithms for object detection",
@@ -113,7 +113,7 @@ class JobList extends React.Component<{}, JobListState> {
                 jobTitle: "Software Developer",
                 company: "Digia",
                 duration: "August 2024 - Present",
-                year: "2024",
+                year: "08/2024",
                 description: [
                     "Working on AI and Data Driven projects, developing scalable solutions",
                     "Contributing to system design and architecture decisions",
