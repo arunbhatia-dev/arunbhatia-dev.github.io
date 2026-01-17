@@ -47,8 +47,7 @@ class Contact extends React.Component<{}, ContactState> {
                     <p className="contact-overline">05. What's Next?</p>
                     <h2 className="contact-title">Get In Touch</h2>
                     <p className="contact-description">
-                        I'm currently open to new opportunities and collaborations. Whether you have a
-                        question, a project idea, or just want to say hi, feel free to reach out.
+                        Have a question, a project idea, or just want to say hi? Feel free to reach out.
                         I'll do my best to get back to you!
                     </p>
 
