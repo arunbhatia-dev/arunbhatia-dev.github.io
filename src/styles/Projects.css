@@ -129,10 +129,11 @@
 }
 
 .project-info {
-  grid-column: 6 / -1;
+  grid-column: 7 / -1;
   grid-row: 1;
   text-align: right;
-  z-index: 1;
+  position: relative;
+  z-index: 2;
 }
 
 .featured-project.reverse .project-image {
@@ -140,7 +141,7 @@
 }
 
 .featured-project.reverse .project-info {
-  grid-column: 1 / 8;
+  grid-column: 1 / 7;
   text-align: left;
 }
 
