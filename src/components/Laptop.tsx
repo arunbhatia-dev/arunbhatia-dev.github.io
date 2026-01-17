@@ -9,13 +9,20 @@ import '../styles/Laptop.css'
 interface ModelProps {
   open: boolean;
   hinge: any;
+  onLoaded?: () => void;
   [key: string]: any;
 }
 
-function Model({ open, hinge, ...props }: ModelProps) {
+function Model({ open, hinge, onLoaded, ...props }: ModelProps) {
   const group = useRef<THREE.Group>(null)
   const { nodes, materials } = useGLTF('/mac-draco.glb') as any
   const [hovered, setHovered] = useState(false)
+
+  useEffect(() => {
+    if (nodes && materials && onLoaded) {
+      onLoaded()
+    }
+  }, [nodes, materials, onLoaded])
 
   useEffect(() => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'), [hovered])
 
@@ -49,11 +56,16 @@ function Model({ open, hinge, ...props }: ModelProps) {
 
 export default function Laptop() {
   const [open, setOpen] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const props = useSpring({ open: Number(open) })
 
   const handleToggle = () => {
     setOpen(!open)
+  }
+
+  const handleLoaded = () => {
+    setIsLoaded(true)
   }
 
   useEffect(() => {
@@ -67,12 +79,13 @@ export default function Laptop() {
 
     container.addEventListener('touchend', handleTouchEnd, { passive: false })
     return () => container.removeEventListener('touchend', handleTouchEnd)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
   return (
     <div
       ref={containerRef}
-      className="laptop-canvas-container"
+      className={`laptop-canvas-container ${isLoaded ? 'loaded' : ''}`}
       style={{
         width: '100%',
         height: '100%',
@@ -80,17 +93,22 @@ export default function Laptop() {
         cursor: 'pointer'
       }}
     >
-      <Canvas dpr={[1, 2]} camera={{ position: [0, 0, -30], fov: 35 }}>
+      <Canvas
+        dpr={[1, 2]}
+        camera={{ position: [0, 0, -30], fov: 35 }}
+        gl={{ alpha: true, antialias: true }}
+        style={{ background: 'transparent' }}
+      >
         <three.pointLight position={[10, 10, 10]} intensity={1.5} />
         <Suspense fallback={null}>
           <group rotation={[0, Math.PI, 0]} onClick={(e: ThreeEvent<MouseEvent>) => (e.stopPropagation(), handleToggle())}>
-            <Model open={open} hinge={props.open.to([0, 1], [1.575, -0.425])} />
+            <Model open={open} hinge={props.open.to([0, 1], [1.575, -0.425])} onLoaded={handleLoaded} />
           </group>
           <Environment preset="city" />
         </Suspense>
         <ContactShadows position={[0, -4.5, 0]} opacity={0.4} scale={20} blur={1.75} far={4.5} />
       </Canvas>
-      <p className="laptop-hint">{open ? 'Tap to close' : 'Tap to open'}</p>
+      {isLoaded && <p className="laptop-hint">{open ? 'Tap to close' : 'Tap to open'}</p>}
     </div>
   )
 }
