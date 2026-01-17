@@ -44,7 +44,7 @@ class Contact extends React.Component<{}, ContactState> {
                 className={`contact-section ${this.state.isVisible ? 'fade-in' : ''}`}
             >
                 <div className="contact-content">
-                    <p className="contact-overline">05. What's Next?</p>
+                    <p className="contact-overline">06. What's Next?</p>
                     <h2 className="contact-title">Get In Touch</h2>
                     <p className="contact-description">
                         Have a question, a project idea, or just want to say hi? Feel free to reach out.
