@@ -81,7 +81,7 @@ const NavBar: React.FC = () => {
             onClick={closeMenu}
             style={{ animationDelay: `${index * 0.1}s` }}
           >
-            <span className="nav-number">0{index + 1}.</span>
+            <span className="nav-number">0{index}.</span>
             {link.label}
           </a>
         ))}
