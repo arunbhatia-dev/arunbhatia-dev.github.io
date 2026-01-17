@@ -1,23 +1,8 @@
-.laptop-container {
-  width: 100%;
-  height: 500px;
-  margin-bottom: -2rem;
-  margin-top: -10rem;
-}
+/* The laptop-container styles are in Intro.css */
+/* This file is kept for any laptop-specific overrides */
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .laptop-container {
-    height: 350px;
-    margin-top: -15rem;
-    margin-bottom: -1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .laptop-container {
-    height: 300px;
-    margin-top: -15rem;
-    margin-bottom: 0rem;
-  }
+/* Ensure Canvas has proper stacking */
+.laptop-container canvas {
+  position: relative;
+  z-index: 10;
 }

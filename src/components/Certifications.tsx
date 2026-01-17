@@ -48,7 +48,7 @@ class Certifications extends React.Component<{}, CertificationsState> {
             {
                 name: "AWS Certified Cloud Practitioner",
                 issuer: "Amazon Web Services",
-                date: "2024",
+                date: "2025",
                 credentialUrl: "https://aws.amazon.com/certification/certified-cloud-practitioner/",
             },
         ];

@@ -8,6 +8,7 @@ interface Experience {
     jobTitle: string;
     duration: string;
     description: string[];
+    displayName?: string;
 }
 
 interface Experiences {
@@ -82,23 +83,25 @@ class JobList extends React.Component<{}, JobListState> {
                     "sound source classification using machine learning techniques",
                 ]
             },
-            "Aalto University": {
+            "Aalto University (TA)": {
                 jobTitle: "Teaching Assistant @",
                 duration: "January 2022 - May 2023",
                 description: [
                     "Teaching assistant in the course: Use of computer science in applications",
                     "Conducted weekly exercise sessions and provided support to students",
                     "Topics/technologies covered: Python, SQL, Databases, HTML, CSS, JavaScript"
-                ]
+                ],
+                displayName: "Aalto University"
             },
-            "Aalto University (Research)": {
+            "Aalto University (RA)": {
                 jobTitle: "Research Assistant @",
                 duration: "May 2022 - August 2022",
                 description: [
                     "Analyzed RGB and thermal images for research purposes",
                     "Compared image processing and registration algorithms in both RGB and thermal cases",
                     "Developed Python-based tools for image analysis and processing"
-                ]
+                ],
+                displayName: "Aalto University"
             }
         };
 
@@ -129,7 +132,7 @@ class JobList extends React.Component<{}, JobListState> {
                             {companies.map((company, index) => (
                                 <Tab
                                     key={index}
-                                    label={company}
+                                    label={experiences[company].displayName || company}
                                     className="job-tab"
                                     sx={{
                                         color: "var(--slate)",
@@ -158,7 +161,7 @@ class JobList extends React.Component<{}, JobListState> {
                                             <h3 className="job-title">
                                                 {experiences[company].jobTitle}
                                                 <span className="company-name">
-                                                    {company}
+                                                    {experiences[company].displayName || company}
                                                 </span>
                                             </h3>
                                             <p className="job-duration">

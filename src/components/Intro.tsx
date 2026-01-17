@@ -10,35 +10,51 @@ class Intro extends React.Component {
     render() {
         return (
             <div id="intro">
+              <div className="intro-background">
+                <div className="gradient-orb orb-1"></div>
+                <div className="gradient-orb orb-2"></div>
+                <div className="gradient-orb orb-3"></div>
+              </div>
+
               <div className="intro-content">
-                <div className="laptop-container">
-                  <Laptop />
+                <div className="intro-left">
+                  <div id="intro-desc">
+                    <div className="intro-greeting">
+                      <Typist
+                        typingDelay={100}
+                        cursor={<span className="cursor">|</span>}
+                      >
+                        hi, <span className="intro-name">arun</span> here.
+                      </Typist>
+                    </div>
+                    <h2 className="intro-tagline">
+                      Software Engineer & <br/>
+                      <span className="highlight">AI Specialist</span>
+                    </h2>
+                    <div className="intro-description">
+                      <p className="fade-in-text">
+                        Building intelligent systems that make a real difference.
+                        Passionate about AI, Machine Learning, and scalable solutions.
+                      </p>
+                    </div>
+                    <div className="intro-cta">
+                      <a href="#projects" className="cta-button primary">
+                        View Projects
+                      </a>
+                      <a href="#contact" className="cta-button secondary">
+                        Get in Touch
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div id="intro-desc">
-                  <p className="intro-hello">Hi, my name is</p>
-                  <div className="intro-greeting">
-                    <Typist
-                      typingDelay={100}
-                      cursor={<span className="cursor">|</span>}
-                    >
-                      <span className="intro-name">Arun Bhatia.</span>
-                    </Typist>
-                  </div>
-                  <h2 className="intro-tagline">I build things with AI & data.</h2>
-                  <div className="intro-description">
-                    <p className="fade-in-text">
-                      I'm a software engineer from Helsinki, Finland, specializing in
-                      AI, Machine Learning, and scalable software solutions. Currently,
-                      I'm focused on building intelligent systems that make a real difference.
-                    </p>
-                  </div>
-                  <div className="intro-cta">
-                    <a href="#projects" className="cta-button">
-                      Check out my work
-                    </a>
+
+                <div className="intro-right">
+                  <div className="laptop-container">
+                    <Laptop />
                   </div>
                 </div>
               </div>
+
               <a href="#about" className="scroll-indicator" aria-label="Scroll to about section">
                 <KeyboardArrowDownIcon />
               </a>
