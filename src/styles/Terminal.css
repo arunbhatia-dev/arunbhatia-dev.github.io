@@ -177,25 +177,6 @@
   background: rgba(99, 102, 241, 0.4);
 }
 
-/* Blinking cursor effect */
-.terminal-input-line::after {
-  content: '';
-  display: inline-block;
-  width: 8px;
-  height: 1.2em;
-  background: #a855f7;
-  margin-left: 2px;
-  animation: blink 1s step-end infinite;
-  vertical-align: text-bottom;
-}
-
-.terminal-input:focus + .terminal-input-line::after {
-  display: none;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
 
 /* Mobile responsive */
 @media (max-width: 768px) {
