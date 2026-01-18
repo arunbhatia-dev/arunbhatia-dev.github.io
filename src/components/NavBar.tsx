@@ -3,9 +3,14 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import TerminalIcon from "@mui/icons-material/Terminal";
 import "../styles/NavBar.css";
 
-const NavBar: React.FC = () => {
+interface NavBarProps {
+  onDevClick: () => void;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ onDevClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("intro");
@@ -88,6 +93,10 @@ const NavBar: React.FC = () => {
       </div>
 
       <div className="navbar-right">
+        <button className="dev-button" onClick={onDevClick} aria-label="Open terminal">
+          <TerminalIcon />
+          <span>DEV</span>
+        </button>
         <a href="https://github.com/arunbhatia-dev" target="_blank" rel="noopener noreferrer" className="icon-link">
           <GitHubIcon />
         </a>
