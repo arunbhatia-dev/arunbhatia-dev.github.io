@@ -1,28 +1,25 @@
 # arunbhatia.dev
 
-My personal portfolio site. Built with React and Three.js.
+Portfolio site with an interactive 3D MacBook you can open/close. Because why not.
 
-Live at: https://arunbhatia-dev.github.io
+**[arunbhatia-dev.github.io](https://arunbhatia-dev.github.io)**
 
-## Running locally
+## What's in here
+
+- Interactive 3D laptop (React Three Fiber)
+- Timeline-based experience section
+- Project showcase with live demos
+- Responsive design (works on mobile too)
+- No UI frameworks, just CSS
+
+## Dev
 
 ```bash
 npm install
-npm start
+npm start         # localhost:3000
+npm run deploy    # ship it
 ```
 
-Opens at localhost:3000
+## Tech
 
-## Deploy
-
-```bash
-npm run deploy
-```
-
-Builds and pushes to gh-pages.
-
-## Stack
-
-- React + TypeScript
-- Three.js / React Three Fiber (3D laptop)
-- Plain CSS
+React, TypeScript, Three.js, and vibes.
