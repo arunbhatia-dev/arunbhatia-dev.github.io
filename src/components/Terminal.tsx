@@ -98,10 +98,8 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
         output.push({ type: 'output', content: 'hello            Hello, World!' });
         output.push({ type: 'output', content: 'matrix           Enter the Matrix' });
         output.push({ type: 'output', content: 'vim              Try to exit' });
-        output.push({ type: 'output', content: 'sudo hire arun   Hire me!' });
+        output.push({ type: 'output', content: 'sudo hire arun   Try to hire me' });
         output.push({ type: 'output', content: 'rm -rf /         Live dangerously' });
-        output.push({ type: 'output', content: '' });
-        output.push({ type: 'output', content: 'Tip: Use Tab to autocomplete commands' });
         output.push({ type: 'output', content: '' });
         break;
 
