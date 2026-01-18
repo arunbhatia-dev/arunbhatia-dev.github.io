@@ -107,16 +107,12 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
 
       case 'skills':
         output.push({ type: 'output', content: '' });
-        output.push({ type: 'output', content: '┌─────────────┬────────────────────────────────────────────────┐' });
-        output.push({ type: 'output', content: '│ Category    │ Technologies                                   │' });
-        output.push({ type: 'output', content: '├─────────────┼────────────────────────────────────────────────┤' });
-        output.push({ type: 'output', content: '│ Languages   │ ' + skills.languages.join(', ').padEnd(46) + ' │' });
-        output.push({ type: 'output', content: '│ Frameworks  │ ' + skills.frameworks.join(', ').padEnd(46) + ' │' });
-        output.push({ type: 'output', content: '│ AI/ML       │ ' + skills.ai_ml.join(', ').padEnd(46) + ' │' });
-        output.push({ type: 'output', content: '│ Databases   │ ' + skills.databases.join(', ').padEnd(46) + ' │' });
-        output.push({ type: 'output', content: '│ AWS         │ ' + skills.cloud.aws.join(', ').padEnd(46) + ' │' });
-        output.push({ type: 'output', content: '│ Azure       │ ' + skills.cloud.azure.join(', ').padEnd(46) + ' │' });
-        output.push({ type: 'output', content: '└─────────────┴────────────────────────────────────────────────┘' });
+        output.push({ type: 'output', content: 'Languages    ' + skills.languages.join(', ') });
+        output.push({ type: 'output', content: 'Frameworks   ' + skills.frameworks.join(', ') });
+        output.push({ type: 'output', content: 'AI/ML        ' + skills.ai_ml.join(', ') });
+        output.push({ type: 'output', content: 'Databases    ' + skills.databases.join(', ') });
+        output.push({ type: 'output', content: 'AWS          ' + skills.cloud.aws.join(', ') });
+        output.push({ type: 'output', content: 'Azure        ' + skills.cloud.azure.join(', ') });
         output.push({ type: 'output', content: '' });
         break;
 
