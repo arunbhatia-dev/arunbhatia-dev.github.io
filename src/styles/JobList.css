@@ -215,6 +215,11 @@
   animation: fadeInDetail 0.4s ease;
 }
 
+/* Mobile inline detail - hidden on desktop */
+.h-timeline-detail-mobile {
+  display: none;
+}
+
 @keyframes fadeInDetail {
   from {
     opacity: 0;
@@ -406,8 +411,16 @@
     display: none;
   }
 
-  .h-timeline-item.active .h-timeline-detail-mobile {
+  /* Show inline detail card on mobile */
+  .h-timeline-detail-mobile {
     display: block;
+    background: rgba(26, 26, 46, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin: 0.5rem 0 1rem 2.75rem;
+    animation: fadeInDetail 0.3s ease;
   }
 }
 
@@ -489,5 +502,39 @@
   .h-timeline-detail {
     padding: 1.5rem;
     border-radius: 16px;
+  }
+
+  .h-timeline-detail-mobile {
+    padding: 1.25rem;
+    margin: 0.5rem 0 1rem 2rem;
+    border-radius: 12px;
+  }
+
+  .h-timeline-detail-mobile .detail-header {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .h-timeline-detail-mobile .detail-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+
+  .h-timeline-detail-mobile .detail-icon svg {
+    font-size: 1.2rem;
+  }
+
+  .h-timeline-detail-mobile .detail-role {
+    font-size: 1.1rem;
+  }
+
+  .h-timeline-detail-mobile .detail-company {
+    font-size: 0.95rem;
+  }
+
+  .h-timeline-detail-mobile .detail-description li {
+    font-size: 0.85rem;
+    line-height: 1.6;
   }
 }

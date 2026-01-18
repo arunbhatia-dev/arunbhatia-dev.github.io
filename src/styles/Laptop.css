@@ -48,6 +48,13 @@
 @media (max-width: 768px) {
   .laptop-hint {
     font-size: 0.7rem;
-    bottom: 5px;
+    bottom: -5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .laptop-hint {
+    font-size: 0.65rem;
+    bottom: -10px;
   }
 }

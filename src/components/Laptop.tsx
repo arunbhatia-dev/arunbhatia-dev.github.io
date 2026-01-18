@@ -66,6 +66,10 @@ export default function Laptop() {
 
   const handleLoaded = () => {
     setIsLoaded(true)
+    // Force canvas to recalculate size after layout settles
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'))
+    }, 100)
   }
 
   useEffect(() => {

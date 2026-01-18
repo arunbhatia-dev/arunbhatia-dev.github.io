@@ -148,21 +148,43 @@ class JobList extends React.Component<{}, JobListState> {
 
                         <div className="h-timeline-items">
                             {experiences.map((exp, index) => (
-                                <div
-                                    key={index}
-                                    className={`h-timeline-item ${selectedIndex === index ? 'active' : ''} ${exp.current ? 'current' : ''}`}
-                                    onClick={() => this.setState({ selectedIndex: index })}
-                                    style={{ animationDelay: `${index * 0.1}s` }}
-                                >
-                                    <div className={`h-timeline-dot ${selectedIndex === index ? 'active' : ''} ${exp.current ? 'current' : ''}`}>
-                                        {this.getIcon(exp.icon)}
+                                <React.Fragment key={index}>
+                                    <div
+                                        className={`h-timeline-item ${selectedIndex === index ? 'active' : ''} ${exp.current ? 'current' : ''}`}
+                                        onClick={() => this.setState({ selectedIndex: index })}
+                                        style={{ animationDelay: `${index * 0.1}s` }}
+                                    >
+                                        <div className={`h-timeline-dot ${selectedIndex === index ? 'active' : ''} ${exp.current ? 'current' : ''}`}>
+                                            {this.getIcon(exp.icon)}
+                                        </div>
+                                        <div className="h-timeline-label">
+                                            <span className="h-timeline-year">{exp.year}</span>
+                                            <span className="h-timeline-company">{exp.company}</span>
+                                            <span className="h-timeline-role">{exp.jobTitle}</span>
+                                        </div>
                                     </div>
-                                    <div className="h-timeline-label">
-                                        <span className="h-timeline-year">{exp.year}</span>
-                                        <span className="h-timeline-company">{exp.company}</span>
-                                        <span className="h-timeline-role">{exp.jobTitle}</span>
-                                    </div>
-                                </div>
+                                    {/* Mobile inline detail - shows below selected item */}
+                                    {selectedIndex === index && (
+                                        <div className="h-timeline-detail-mobile">
+                                            <div className="detail-header">
+                                                <div className="detail-icon">
+                                                    {this.getIcon(exp.icon)}
+                                                </div>
+                                                <div className="detail-title-group">
+                                                    <h3 className="detail-role">{exp.jobTitle}</h3>
+                                                    <h4 className="detail-company">{exp.company}</h4>
+                                                    <span className="detail-duration">{exp.duration}</span>
+                                                </div>
+                                                {exp.current && <span className="current-badge">Current</span>}
+                                            </div>
+                                            <ul className="detail-description">
+                                                {exp.description.map((item, idx) => (
+                                                    <li key={idx}>{item}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+                                </React.Fragment>
                             ))}
                         </div>
                     </div>
