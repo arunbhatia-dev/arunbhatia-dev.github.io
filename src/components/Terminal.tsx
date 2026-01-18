@@ -16,8 +16,11 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
   const [history, setHistory] = useState<OutputLine[]>([]);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const [showMatrix, setShowMatrix] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
+
+  const availableCommands = ['help', 'about', 'skills', 'experience', 'projects', 'contact', 'clear', 'cls', 'exit', 'hello', 'vim', 'matrix', 'sudo hire arun', 'rm -rf /'];
 
   const skills = {
     languages: ['TypeScript', 'JavaScript', 'Python', 'Scala', 'C'],
@@ -153,6 +156,53 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
         onClose();
         return [];
 
+      case 'hello':
+        output.push({ type: 'output', content: '' });
+        output.push({ type: 'output', content: 'Hello, World!' });
+        output.push({ type: 'output', content: '' });
+        break;
+
+      case 'vim':
+        output.push({ type: 'output', content: '' });
+        output.push({ type: 'output', content: 'You\'re stuck forever now. Just kidding, type :q' });
+        output.push({ type: 'output', content: '...wait, that won\'t work here either.' });
+        output.push({ type: 'output', content: '' });
+        break;
+
+      case 'sudo hire arun':
+        output.push({ type: 'output', content: '' });
+        output.push({ type: 'output', content: '[sudo] password for recruiter: ********' });
+        output.push({ type: 'output', content: '' });
+        output.push({ type: 'output', content: '✓ Permission granted!' });
+        output.push({ type: 'output', content: '✓ Initializing hiring process...' });
+        output.push({ type: 'output', content: '✓ Sending offer letter...' });
+        output.push({ type: 'output', content: '' });
+        output.push({ type: 'output', content: 'Just kidding! But feel free to reach out: arun.bhatia@aalto.fi' });
+        output.push({ type: 'output', content: '' });
+        break;
+
+      case 'rm -rf /':
+      case 'rm -rf':
+        output.push({ type: 'output', content: '' });
+        output.push({ type: 'error', content: 'Deleting system files...' });
+        output.push({ type: 'error', content: 'Removing /usr...' });
+        output.push({ type: 'error', content: 'Removing /home...' });
+        output.push({ type: 'error', content: 'Removing /var...' });
+        output.push({ type: 'output', content: '' });
+        output.push({ type: 'output', content: 'Just kidding! This is a browser, not your actual terminal.' });
+        output.push({ type: 'output', content: 'Your files are safe... probably.' });
+        output.push({ type: 'output', content: '' });
+        break;
+
+      case 'matrix':
+        setShowMatrix(true);
+        setTimeout(() => setShowMatrix(false), 4000);
+        output.push({ type: 'output', content: '' });
+        output.push({ type: 'output', content: 'Wake up, Neo...' });
+        output.push({ type: 'output', content: 'The Matrix has you...' });
+        output.push({ type: 'output', content: '' });
+        break;
+
       case '':
         break;
 
@@ -198,7 +248,27 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowUp') {
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      const currentInput = input.trim().toLowerCase();
+      if (currentInput) {
+        const matches = availableCommands.filter(cmd => cmd.startsWith(currentInput));
+        if (matches.length === 1) {
+          setInput(matches[0]);
+        } else if (matches.length > 1) {
+          // Find common prefix
+          let commonPrefix = matches[0];
+          for (const match of matches) {
+            while (!match.startsWith(commonPrefix)) {
+              commonPrefix = commonPrefix.slice(0, -1);
+            }
+          }
+          if (commonPrefix.length > currentInput.length) {
+            setInput(commonPrefix);
+          }
+        }
+      }
+    } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (commandHistory.length > 0) {
         const newIndex = historyIndex < commandHistory.length - 1 ? historyIndex + 1 : historyIndex;
@@ -236,7 +306,8 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="terminal-overlay" onClick={onClose}>
-      <div className="terminal-container" onClick={e => e.stopPropagation()}>
+      <div className={`terminal-container ${showMatrix ? 'matrix-active' : ''}`} onClick={e => e.stopPropagation()}>
+        {showMatrix && <div className="matrix-rain" />}
         <div className="terminal-header">
           <div className="terminal-buttons">
             <span className="terminal-btn close" onClick={onClose}></span>

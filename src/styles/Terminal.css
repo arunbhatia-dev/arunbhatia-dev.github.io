@@ -232,3 +232,60 @@
     font-size: 0.75rem;
   }
 }
+
+/* Matrix animation */
+.terminal-container.matrix-active {
+  position: relative;
+  overflow: hidden;
+}
+
+.matrix-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(0, 255, 0, 0.03) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 100;
+  animation: matrixPulse 0.5s ease-in-out infinite;
+}
+
+.matrix-rain::before {
+  content: '01001000 01101001 01110010 01100101 00100000 01000001 01110010 01110101 01101110';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #00ff00;
+  opacity: 0.15;
+  word-break: break-all;
+  overflow: hidden;
+  animation: matrixScroll 2s linear infinite;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+@keyframes matrixPulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes matrixScroll {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.terminal-container.matrix-active .terminal-body {
+  text-shadow: 0 0 5px #00ff00;
+}
+
+.terminal-container.matrix-active .terminal-line {
+  color: #00ff00 !important;
+}
