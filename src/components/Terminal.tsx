@@ -177,7 +177,8 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
         output.push({ type: 'output', content: '✓ Initializing hiring process...' });
         output.push({ type: 'output', content: '✓ Sending offer letter...' });
         output.push({ type: 'output', content: '' });
-        output.push({ type: 'output', content: 'Just kidding! But feel free to reach out: arun.bhatia@aalto.fi' });
+        output.push({ type: 'output', content: 'Just kidding! But let\'s connect:' });
+        output.push({ type: 'output', content: 'linkedin.com/in/arun-bhatia-807043204' });
         output.push({ type: 'output', content: '' });
         break;
 
@@ -247,19 +248,20 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
     setInput('');
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Tab') {
       e.preventDefault();
-      const currentInput = input.trim().toLowerCase();
-      if (currentInput) {
+      e.stopPropagation();
+      const currentInput = input.toLowerCase();
+      if (currentInput.length > 0) {
         const matches = availableCommands.filter(cmd => cmd.startsWith(currentInput));
         if (matches.length === 1) {
           setInput(matches[0]);
         } else if (matches.length > 1) {
-          // Find common prefix
+          // Find common prefix among matches
           let commonPrefix = matches[0];
-          for (const match of matches) {
-            while (!match.startsWith(commonPrefix)) {
+          for (let i = 1; i < matches.length; i++) {
+            while (commonPrefix.length > 0 && !matches[i].startsWith(commonPrefix)) {
               commonPrefix = commonPrefix.slice(0, -1);
             }
           }
@@ -268,6 +270,7 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
           }
         }
       }
+      return;
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (commandHistory.length > 0) {
