@@ -1,7 +1,28 @@
-# https://arunbhatia-dev.github.io
+# arunbhatia.dev
 
-1) npm strart
+My personal portfolio site. Built with React and Three.js.
 
-2) npm run deploy -- -m "message"
+Live at: https://arunbhatia-dev.github.io
 
-3) Commit the changes in main branch
+## Running locally
+
+```bash
+npm install
+npm start
+```
+
+Opens at localhost:3000
+
+## Deploy
+
+```bash
+npm run deploy
+```
+
+Builds and pushes to gh-pages.
+
+## Stack
+
+- React + TypeScript
+- Three.js / React Three Fiber (3D laptop)
+- Plain CSS
