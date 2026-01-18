@@ -82,37 +82,37 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
         output.push({ type: 'output', content: '' });
         output.push({ type: 'output', content: 'Available commands:' });
         output.push({ type: 'output', content: '' });
-        output.push({ type: 'output', content: '  help        Show this help message' });
-        output.push({ type: 'output', content: '  about       About me' });
-        output.push({ type: 'output', content: '  skills      My tech stack' });
-        output.push({ type: 'output', content: '  experience  Work history' });
-        output.push({ type: 'output', content: '  projects    Things I\'ve built' });
-        output.push({ type: 'output', content: '  contact     Get in touch' });
-        output.push({ type: 'output', content: '  clear       Clear terminal' });
-        output.push({ type: 'output', content: '  exit        Close terminal' });
+        output.push({ type: 'output', content: 'help        Show this help message' });
+        output.push({ type: 'output', content: 'about       About me' });
+        output.push({ type: 'output', content: 'skills      My tech stack' });
+        output.push({ type: 'output', content: 'experience  Work history' });
+        output.push({ type: 'output', content: 'projects    Things I\'ve built' });
+        output.push({ type: 'output', content: 'contact     Get in touch' });
+        output.push({ type: 'output', content: 'clear/cls   Clear terminal' });
+        output.push({ type: 'output', content: 'exit        Close terminal' });
         output.push({ type: 'output', content: '' });
         break;
 
       case 'about':
         output.push({ type: 'output', content: '' });
-        output.push({ type: 'output', content: '  Hey, I\'m Arun Bhatia.' });
+        output.push({ type: 'output', content: 'Hey, I\'m Arun Bhatia.' });
         output.push({ type: 'output', content: '' });
-        output.push({ type: 'output', content: '  Software Engineer at Digia, working on AI, ML, and Big Data.' });
-        output.push({ type: 'output', content: '  MSc from Aalto University, Finland.' });
+        output.push({ type: 'output', content: 'Software Engineer at Digia, working on AI, ML, and Big Data.' });
+        output.push({ type: 'output', content: 'MSc from Aalto University, Finland.' });
         output.push({ type: 'output', content: '' });
-        output.push({ type: 'output', content: '  I build scalable software that solves complex problems.' });
-        output.push({ type: 'output', content: '  Outside work: sports, science, and exploring new tech.' });
+        output.push({ type: 'output', content: 'I build scalable software that solves complex problems.' });
+        output.push({ type: 'output', content: 'Outside work: sports, science, and exploring new tech.' });
         output.push({ type: 'output', content: '' });
         break;
 
       case 'skills':
         output.push({ type: 'output', content: '' });
-        output.push({ type: 'output', content: '  Languages:   ' + skills.languages.join(', ') });
-        output.push({ type: 'output', content: '  Frameworks:  ' + skills.frameworks.join(', ') });
-        output.push({ type: 'output', content: '  AI/ML:       ' + skills.ai_ml.join(', ') });
-        output.push({ type: 'output', content: '  Databases:   ' + skills.databases.join(', ') });
-        output.push({ type: 'output', content: '  AWS:         ' + skills.cloud.aws.join(', ') });
-        output.push({ type: 'output', content: '  Azure:       ' + skills.cloud.azure.join(', ') });
+        output.push({ type: 'output', content: 'Languages:   ' + skills.languages.join(', ') });
+        output.push({ type: 'output', content: 'Frameworks:  ' + skills.frameworks.join(', ') });
+        output.push({ type: 'output', content: 'AI/ML:       ' + skills.ai_ml.join(', ') });
+        output.push({ type: 'output', content: 'Databases:   ' + skills.databases.join(', ') });
+        output.push({ type: 'output', content: 'AWS:         ' + skills.cloud.aws.join(', ') });
+        output.push({ type: 'output', content: 'Azure:       ' + skills.cloud.azure.join(', ') });
         output.push({ type: 'output', content: '' });
         break;
 
@@ -120,8 +120,8 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
         output.push({ type: 'output', content: '' });
         experiences.forEach(exp => {
           const current = exp.current ? ' [CURRENT]' : '';
-          output.push({ type: 'output', content: `  ${exp.role}` });
-          output.push({ type: 'output', content: `  @ ${exp.company} | ${exp.period}${current}` });
+          output.push({ type: 'output', content: `${exp.role}` });
+          output.push({ type: 'output', content: `@ ${exp.company} | ${exp.period}${current}` });
           output.push({ type: 'output', content: '' });
         });
         break;
@@ -129,21 +129,22 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
       case 'projects':
         output.push({ type: 'output', content: '' });
         projects.forEach((proj, i) => {
-          output.push({ type: 'output', content: `  ${i + 1}. ${proj.name}` });
-          output.push({ type: 'output', content: `     ${proj.tech}` });
+          output.push({ type: 'output', content: `${i + 1}. ${proj.name}` });
+          output.push({ type: 'output', content: `   ${proj.tech}` });
           output.push({ type: 'output', content: '' });
         });
         break;
 
       case 'contact':
         output.push({ type: 'output', content: '' });
-        output.push({ type: 'output', content: `  Email:     ${contact.email}` });
-        output.push({ type: 'output', content: `  GitHub:    ${contact.github}` });
-        output.push({ type: 'output', content: `  LinkedIn:  ${contact.linkedin}` });
+        output.push({ type: 'output', content: `Email:     ${contact.email}` });
+        output.push({ type: 'output', content: `GitHub:    ${contact.github}` });
+        output.push({ type: 'output', content: `LinkedIn:  ${contact.linkedin}` });
         output.push({ type: 'output', content: '' });
         break;
 
       case 'clear':
+      case 'cls':
         setHistory([]);
         return [];
 
@@ -155,8 +156,8 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
         break;
 
       default:
-        output.push({ type: 'error', content: `  command not found: ${cmd}` });
-        output.push({ type: 'output', content: '  Type "help" for available commands.' });
+        output.push({ type: 'error', content: `command not found: ${cmd}` });
+        output.push({ type: 'output', content: 'Type "help" for available commands.' });
         output.push({ type: 'output', content: '' });
     }
 
