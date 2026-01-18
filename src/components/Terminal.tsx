@@ -340,16 +340,20 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
           ))}
           <form onSubmit={handleSubmit} className="terminal-input-line">
             <span className="prompt">❯ </span>
-            <input
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={e => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="terminal-input"
-              autoComplete="off"
-              spellCheck={false}
-            />
+            <div className="terminal-input-wrapper">
+              <span className="terminal-input-mirror">{input}</span>
+              <span className="terminal-cursor"></span>
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="terminal-input"
+                autoComplete="off"
+                spellCheck={false}
+              />
+            </div>
           </form>
         </div>
       </div>
